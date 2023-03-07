@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="body"></div>
+<script>
+    const div = document.getElementById("body");
+
+    const label1 = document.createElement("label");
+    label1.innerHTML = "First Number: ";
+    label1.setAttribute("for", "num1");
+    div.appendChild(label1);
+
+    const input1 = document.createElement("input");
+    input1.type = "number";
+    input1.id = "num1"
+    input1.name = "num1";
+    div.appendChild(input1);
+
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
+
+    const label2 = document.createElement("label");
+    label2.innerHTML = "Second Number: ";
+    label2.setAttribute("for", "num2");
+    div.appendChild(label2);
+
+    const input2 = document.createElement("input");
+    input2.type = "number";
+    input2.id = "num2";
+    input2.name = "num2";
+    div.appendChild(input2);
+
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
+
+    const button = document.createElement("button");
+    button.innerHTML = "Add Numbers";
+    button.setAttribute("type", "button");
+    button.onclick = addNumbers;
+    div.appendChild(button);
+
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
+
+    const label3 = document.createElement("label");
+    label3.innerHTML = "Result: ";
+    label3.setAttribute("for", "result");
+    div.appendChild(label3);
+
+    const result = document.createElement("input");
+    result.type = "number";
+    result.id = "result";
+    result.name = "result";
+    div.appendChild(result);
+
+    function addNumbers() {
+        let num1 = Number(document.getElementById("num1").value);
+        let num2 = Number(document.getElementById("num2").value);
+        document.getElementById("result").value = num1 + num2;
+    }
+</script>
+</body>
+</html>

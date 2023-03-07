@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Store</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div class="w3-container">
+    <h2>Store</h2>
+    <button onclick="addProduct()">Add Product</button>
+    <br>
+    <br>
+    <div class="w3-responsive">
+        <table class="w3-table-all w3-hoverable" id="table">
+            <tr class="w3-light-grey">
+                <th>Delete</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <label for="total">Big Total</label>
+    <input id="total" name="total" value="0" style="text-align: right; background-color: lightgrey" disabled>
+</div>
+<script>
+    function addProduct() {
+        const table = document.getElementById("table");
+        const row = document.createElement("tr");
+        const col_delete = document.createElement("td");
+        const col_product = document.createElement("td");
+        const col_quantity = document.createElement("td");
+        const col_price = document.createElement("td");
+        const col_total = document.createElement("td");
+        const in_delete = document.createElement("button");
+        const in_product = document.createElement("input");
+        const in_quantity = document.createElement("input");
+        const in_price = document.createElement("input");
+        const in_total = document.createElement("input");
+
+        in_delete.innerHTML = "X";
+        in_delete.onclick = deleteRow;
+        in_quantity.value = "0";
+        in_quantity.onchange = getTotal;
+        in_price.value = "0";
+        in_price.onchange = getTotal;
+        in_total.value = "0";
+        in_total.disabled = true;
+        in_total.style.backgroundColor = "lightgrey";
+        in_total.style.textAlign = "right";
+
+        col_delete.appendChild(in_delete);
+        col_product.appendChild(in_product);
+        col_quantity.appendChild(in_quantity);
+        col_price.appendChild(in_price);
+        col_total.appendChild(in_total);
+
+        row.appendChild(col_delete);
+        row.appendChild(col_product);
+        row.appendChild(col_quantity);
+        row.appendChild(col_price);
+        row.appendChild(col_total);
+        table.appendChild(row);
+    }
+
+    function deleteRow(button) {
+        let table = button.target.parentNode.parentNode.parentNode;
+        button.target.parentElement.parentElement.remove();
+        let big_total = 0;
+        for (let i = 2; i < table.childNodes.length; i++)
+            big_total += Number(table.childNodes[i].childNodes[4].firstChild.value);
+        document.getElementById("total").value = big_total;
+    }
+
+    function getTotal(input) {
+        let row = input.target.parentNode.parentNode;
+        let table = row.parentNode;
+        let quantity = Number(row.childNodes[2].firstChild.value);
+        let price = Number(row.childNodes[3].firstChild.value);
+        row.childNodes[4].firstChild.value = quantity * price;
+        let big_total = 0;
+        for (let i = 2; i < table.childNodes.length; i++)
+            big_total += Number(table.childNodes[i].childNodes[4].firstChild.value);
+        document.getElementById("total").value = big_total;
+    }
+</script>
+</body>
+</html>
