@@ -1,4 +1,4 @@
-const {showMenu, pause, inquirerMenu, readDesc} = require('./modules/menus/menu_main');
+const {pause, inquirerMenu, readDesc} = require('./modules/menus/menu_main');
 const Tasks = require('./modules/models/tasks');
 const tasks = new Tasks();
 

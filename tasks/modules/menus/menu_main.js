@@ -79,7 +79,6 @@ const readDesc = async (message) => {
 }
 
 module.exports = {
-    showMenu,
     pause,
     inquirerMenu,
     readDesc
