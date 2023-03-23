@@ -1,21 +1,21 @@
 const Task = require('./task')
 
 class Tasks {
-    _list = {}
+    list = {}
 
     constructor() {
-        this._list = {};
+        this.list = {};
     }
 
     addTask(desc = '') {
         const task = new Task(desc);
-        this._list[task.id] = task;
+        this.list[task.id] = task;
     }
 
     get showTasks() {
         const list = [];
-        Object.keys(this._list).forEach(key => {
-            const task = this._list[key];
+        Object.keys(this.list).forEach(key => {
+            const task = this.list[key];
             list.push(task);
         })
         return list;
