@@ -1,4 +1,5 @@
 const {pause, inquirerMenu, readDesc} = require('./modules/menus/menu_main');
+const {saveData} = require("./modules/menus/save_file");
 const Tasks = require('./modules/models/tasks');
 const tasks = new Tasks();
 
@@ -11,10 +12,11 @@ const main = async () => {
             case '1':
                 let desc = await readDesc('Description: ');
                 tasks.addTask(desc);
+                saveData(tasks.showTasks);
                 console.log('Task Added');
                 break;
             case '2':
-                console.log(tasks.list);
+                console.log(tasks.showTasks);
                 break;
         }
         if (opt !== '0')

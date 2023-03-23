@@ -22,7 +22,7 @@ const inquirerMenu = async () => {
     const opt = await inquirer.prompt(questions);
     return opt.option;
 }
-const showMenu = () => {
+/*const showMenu = () => {
     return new Promise(resolve => {
         console.clear();
         console.log('========================================='.green);
@@ -45,7 +45,7 @@ const showMenu = () => {
             resolve(opt);
         });
     })
-};
+};*/
 
 const pause = () => {
     return new Promise((resolve) => {
@@ -75,7 +75,8 @@ const readDesc = async (message) => {
         }
     ];
     console.clear();
-    return await inquirer.prompt(question);
+    const desc = await inquirer.prompt(question);
+    return desc.desc;
 }
 
 module.exports = {
