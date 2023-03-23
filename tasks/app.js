@@ -17,7 +17,6 @@ const main = async () => {
                 break;
             case '2':
                 console.log(tasks.showTasks);
-                console.log('Hola');
                 break;
         }
         if (opt !== '0')
