@@ -18,6 +18,16 @@ const main = async () => {
             case '2':
                 tasks.showTasks();
                 break;
+            case '3':
+                tasks.showCompletedTasks();
+                break;
+            case '4':
+                tasks.showPendingTasks();
+                break;
+            case '6':
+                let id = await tasks.menuDelete();
+                tasks.deleteTask(id);
+                break;
             case '0':
                 saveData(tasks.listTasks());
         }
