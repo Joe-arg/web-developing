@@ -24,9 +24,19 @@ const main = async () => {
             case '4':
                 tasks.showPendingTasks();
                 break;
+            case '5':
+                let ids = await tasks.menuComplete();
+
+                break;
             case '6':
                 let id = await tasks.menuDelete();
-                tasks.deleteTask(id);
+                if (id !== '0') {
+                    const ok = await tasks.confirmDelete('Are you sure?');
+                    if (ok) {
+                        tasks.deleteTask(id);
+                        console.log('Task Deleted');
+                    }
+                }
                 break;
             case '0':
                 saveData(tasks.listTasks());
